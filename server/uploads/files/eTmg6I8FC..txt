@@ -1,0 +1,34 @@
+git init
+git config user.name "WilliamVP-25"
+git config user.email "wavp25@gmail.com"
+git add *
+git commit -m "some init msg"
+git push origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/video27086315/vid-20170325-wa0076

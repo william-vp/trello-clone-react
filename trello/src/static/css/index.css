@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import '~antd/dist/antd.css';
+@import "grid.css";
+@import "utilities.css";
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.not-hover {
+    border-bottom: 2px solid transparent !important;
+}
+
+.bg-gray {
+    background-color: #eee !important;
+    color: #6c757d !important;
+}
+
+.bg-green {
+    background-color: rgba(33, 150, 83, 1) !important;
+    color: #fff !important;
+}
+
+.label-small {
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px !important;
+    line-height: 15px;
+    color: #BDBDBD !important;
+}
+
+.name-label {
+    font-family: Poppins, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    line-height: 18px !important;
+    /* identical to box height */
+    letter-spacing: -0.035em !important;
+}
+
+.meta-menu .ant-card-meta-title {
+    margin-top: -5px !important;
+}
+
+input {
+    outline: 0;
+}
+
+.input-profile {
+    background-color: transparent !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    margin-top: 5px !important;
+}
+
+.input-name-board {
+    background-color: transparent !important;
+    padding: 12px !important;
+    border: 1px solid #E0E0E0 !important;
+    box-sizing: border-box !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.textarea-profile {
+    background: transparent !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    margin-top: 5px !important;
+    min-height: 40px !important;
+    margin-bottom: 0 !important;
+    overflow-y: auto;
+    word-wrap: break-word;
+    font-family: Noto Sans, sans-serif;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 14px !important;
+    line-height: 19px !important;
+    letter-spacing: -0.035em !important;
+}
+
+.label-form {
+    font-family: Noto Sans, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    letter-spacing: -0.035em !important;
+}
+
+.group-search {
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.1)) !important;
+    border-radius: 8px !important;
+}
+
+.card-board {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 12px !important;
+}
+
+.card-image {
+    border-radius: 12px !important;
+    margin: 0 auto !important;
+    margin-bottom: 12px !important;
+}
+
+.card-board-title {
+    font-family: Noto Sans, serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    letter-spacing: -0.035em !important;
+}
+
+.ant-btn {
+    border-radius: 8px !important;
+}
+
+.btn-gray {
+    border-radius: 8px !important;
+    background-color: #eee !important;
+    color: #828282 !important;
+    border: 0 !important;
+    font-family: Poppins, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    line-height: 18px !important;
+    letter-spacing: -0.035em !important;
+    vertical-align: central !important;
+}
+
+.btn-gray span {
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+.ant-avatar-square {
+    border-radius: 8px !important;
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.ant-drawer-header {
+    padding-left: 15px;
+}
+
+.btn-gray .m-icon {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.card-login {
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 24px;
+}
+
+.card-profile {
+    border: 1px solid #BDBDBD !important;
+    box-sizing: border-box !important;
+    border-radius: 12px !important;
+}
+
+.input {
+    box-sizing: border-box !important;
+    border-radius: 8px !important;
+    font-family: Noto Sans, serif !important;
+}
+
+.ant-modal-mask {
+    opacity: 0.1 !important;
+    background: rgba(0, 0, 0, .1) !important;
+}
+
+.ant-modal-footer {
+    border-top: 0 !important;
+    border-radius: 8px !important;
+}
+
+.ant-modal-body {
+    border-radius: 8px !important;
+}
+
+/*Spinner loading*/
+
+.spinner-loading {
+    width: 40px;
+    height: 40px;
+    background-color: #2F80ED;
+    margin: 100px auto;
+    -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+    animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+    0% {
+        -webkit-transform: perspective(120px)
+    }
+    50% {
+        -webkit-transform: perspective(120px) rotateY(180deg)
+    }
+    100% {
+        -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+    }
+}
+
+@keyframes sk-rotateplane {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    }
+    50% {
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    }
+    100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+}
+
+/*Material Icon*/
+
+.m-icon {
+    display: inline-flex !important;
+    vertical-align: top !important;
+    margin: 2px;
+}
+
+.button-close {
+    position: absolute !important;
+    width: 32px !important;
+    height: 32px !important;
+    /* left: 845px; */
+    right: 15px;
+    top: 20px;
+    background: #2F80ED !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    z-index: 5 !important;
+    font-size: 20px !important;
+}
+
+.ant-image-img {
+    border-radius: 8px !important;
+}
+
+.btn-visibility {
+    text-align: left !important;
+    height: 58px !important;
+    border-radius: 8px !important;
+}
+
+.desc-meta {
+    font-family: Noto Sans, sans-serif !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 10px !important;
+    line-height: 14px !important;
+    letter-spacing: -0.035em !important;
+}
+
+.title-meta {
+    font-family: Noto Sans, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    letter-spacing: -0.035em !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    .card-profile {
+        border: 0 !important;
+        box-sizing: border-box !important;
+        border-radius: 12px !important;
+        padding: 0 !important;
+    }
+    .back-button-profile {
+        display: none;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .back-button-profile {
+        display: none;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    .back-button-profile {
+        display: none;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .back-button-profile {
+        display: block;
+    }
+}
+
+/* Extra large .back-button-profile {
+        display: none;
+    }devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+    .back-button-profile {
+        display: block;
+    }
+}
+
+.button_add_list {
+    border-radius: 8px !important;
+    border: 0 !important;
+    font-family: Noto Sans, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+    letter-spacing: -0.035em !important;
+}
+
+.text-small {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.div_dashed {
+    border-width: 1px;
+    height: auto;
+    margin-top: 20px;
+    border-style: dashed;
+    border-radius: 15px;
+}
+
+.cards_ul {
+    list-style-type: none;
+    padding: 0px;
+}
