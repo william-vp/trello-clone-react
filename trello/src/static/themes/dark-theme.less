@@ -1,0 +1,108 @@
+@import "node_modules/antd/lib/style/color/colorPalette.less";
+@import "node_modules/antd/dist/antd.less";
+@import "node_modules/antd/lib/style/themes/dark.less";
+
+// These are shared variables that can be extracted to their own file
+@primary-color   : #2F80ED;
+@info-color      : @blue-6;
+@success-color   : @green-6;
+@processing-color: @blue-6;
+@error-color     : @red-5;
+@highlight-color : @red-5;
+//@warning-color: @gold-6;
+@warning-color   : #FFC03D;
+@normal-color    : #d9d9d9;
+@white           : #fff;
+@black           : #000;
+
+@border-radius-base: 3px;
+
+@component-background       : #303030;
+@body-background            : #303030;
+@popover-background         : #303030;
+@border-color-base          : #6f6c6c;
+@border-color-split         : #685e5e;
+@table-header-sort-active-bg: #424242;
+@card-skeleton-bg           : #424242;
+@skeleton-color             : #424242;
+@table-header-sort-active-bg: #424242;
+
+@font-family: -apple-system, 'IBM Plex Sans', sans-serif, 'Noto Sans', 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  'Noto Color Emoji';
+@code-family: 'IBM Plex Sans', Consolas, 'Noto Sans', Menlo, Courier, monospace;
+
+html,
+body {
+  background: @body-background;
+}
+
+.group-search {
+  background: @card-skeleton-bg  !important;
+}
+
+.group-search .ant-select:not(.ant-select-customize-input) .group-search .ant-select-selector {
+  border: none !important;
+}
+
+.bg-gray {
+  background-color: @card-skeleton-bg  !important;
+  color           : #FFFFFF !important;
+}
+
+.card-board {
+  background: @card-skeleton-bg;
+}
+
+.bg-white {
+  background-color: #303030 !important;
+  font-style      : normal !important;
+  font-weight     : 600 !important;
+  font-size       : 12px !important;
+  line-height     : 18px !important;
+  letter-spacing  : -0.035em !important;
+  color           : #FFF !important;
+
+  border       : 1px solid #6f6c6c !important;
+  box-sizing   : border-box !important;
+  border-radius: 8px !important;
+}
+
+.bg-container-gray {
+  background: #303030 !important;
+}
+
+.nav-light {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05) !important;
+  border    : 0 !important;
+}
+
+.btn-gray {
+  background-color: @card-skeleton-bg  !important;
+}
+
+.btn-visibility {
+  border: 0;
+}
+
+.btn-visibility>.active {
+  background: #6f6c6c !important;
+}
+
+.active-meta {
+  border    : 0 !important;
+  background: #6f6c6c !important;
+}
+
+.btn-visibility .m-icon {
+  color: #FFF !important;
+}
+
+.button_add_list {
+  background: #424242 !important;
+  color     : #FFF !important;
+}
+
+.border-gray {
+  border: 1px solid #6f6c6c;
+}

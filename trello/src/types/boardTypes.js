@@ -1,0 +1,24 @@
+export const LOADING_BOARD = "LOADING_BOARD";
+
+export const SELECT_BOARD = "SELECT_BOARD";
+export const SET_BOARDS_USER = "SET_BOARDS_USER";
+export const NEW_BOARD = "NEW_BOARD";
+export const UPDATE_BOARD = "UPDATE_BOARD";
+export const SET_BOARD_SEARCH = "SET_BOARD_SEARCH";
+
+export const SET_MEMBERS_SELECTED_BOARD = "SET_MEMBERS_SELECTED_BOARD";
+export const DELETE_MEMBER_BOARD = "DELETE_MEMBER_BOARD";
+
+/*Lists*/
+export const ADD_LIST_BOARD = "ADD_LIST_BOARD";
+export const SET_LISTS_BOARD = "SET_LISTS_BOARD";
+export const EDIT_LIST_BOARD = "EDIT_LIST_BOARD";
+export const DELETE_LIST_BOARD = "DELETE_LIST_BOARD";
+
+/*Cards*/
+export const LOADING_CARD = "LOADING_CARD";
+export const ADD_CARD = "ADD_CARD";
+export const SET_CARDS = "SET_CARDS";
+export const EDIT_CARD = "EDIT_CARD";
+export const DELETE_CARD = "DELETE_CARD";
+export const SET_ORDER_CARDS_LIST = "SET_ORDER_CARDS_LIST";
