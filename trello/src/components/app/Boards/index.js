@@ -8,6 +8,7 @@ import NewBoard from "./NewBoard";
 import {useDispatch, useSelector} from "react-redux";
 import {getBoardUserAction, selectBoardAction} from "../../../actions/boardActions";
 import Loading from "../../Layouts/Loading";
+import {useHistory} from "react-router-dom";
 
 const {Title, Paragraph} = Typography
 
@@ -17,24 +18,27 @@ const Boards = () => {
     const dispatch = useDispatch();
     const {boards, loadingBoard, search} = useSelector(state => state.board);
     const [resultsSearch, setResultsSearch] = useState([]);
+    const history = useHistory()
 
     const getBoards = () => dispatch(getBoardUserAction())
     const selectBoard = board => dispatch(selectBoardAction(board))
 
     useEffect(() => {
         selectBoard(null)
-        getBoards()
+        //getBoards()
+        if (!sessionStorage.getItem("loggedIn")) {
+            console.log("redirecting to login");
+            history.push("/login");
+        }
         // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
-        if (search != '') {
+        if (search !== '') {
             const boardsUser = [...boards]
-            let results = []
-            results = boardsUser.filter(board => {
-                if (board.name.toLowerCase().includes(search.toLowerCase())) {
-                    return board;
-                }
+            let results = boardsUser.filter(board => {
+                if (board.name.toLowerCase().includes(search.toLowerCase())) return board;
+                return false;
             })
             setResultsSearch(results)
         } else {
@@ -59,7 +63,7 @@ const Boards = () => {
                     </div>
                     <div className="row w-100 mx-0">
                         <MotionScreen>
-                            {search != '' && <Fragment>
+                            {search !== '' && <Fragment>
                                 {resultsSearch.length > 0 && <>
                                     <Title level={5}>{t('app:search_text')} '{search}'</Title>
                                     {resultsSearch.map((board, i) =>
@@ -68,10 +72,10 @@ const Boards = () => {
                                         </div>
                                     )}
                                 </>}
-                                {resultsSearch.length == 0 && <Paragraph type="secondary" level={5}>{t('app:searching_no_results')}</Paragraph> }
+                                {resultsSearch.length === 0 && <Paragraph type="secondary" level={5}>{t('app:searching_no_results')}</Paragraph> }
                             </Fragment>}
 
-                            {boards.length > 0 && resultsSearch.length == 0 && <>
+                            {boards.length > 0 && resultsSearch.length === 0 && <>
                                 {boards.map((board, i) =>
                                     <div className="col-lg-3 col-md-4 col-sm-6 col-xs-6" key={i}>
                                         <BoardCard board={board}/>

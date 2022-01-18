@@ -12,9 +12,10 @@ export const AuthContext = ({children}) => {
     const [profile, setProfile] = useState({});
     const [loadingAuth, setLoadingAuth] = useState(false);
     const [loadingUser, setLoadingUser] = useState(false);
+    let timeOut= ''
 
     const getUser = async () => {
-        setLoadingAuth(true);
+        if (!sessionStorage.getItem("loggedIn")) setLoadingAuth(true);
         await app.auth().onAuthStateChanged(async (user) => {
             if (user) {
                 await app
@@ -22,12 +23,10 @@ export const AuthContext = ({children}) => {
                     .currentUser.getIdToken(true)
                     .then((idToken) => {
                         localStorage.setItem("authToken", idToken);
-                        console.log(idToken);
                         setUser(user);
                         getProfile();
                     })
-                    .catch(function (error) {
-                        console.log(error);
+                    .catch(function () {
                         localStorage.removeItem("authToken");
                         setUser(null);
                     });
@@ -47,19 +46,26 @@ export const AuthContext = ({children}) => {
     }, []);
 
     const logOut = async () => {
-        localStorage.removeItem("authToken");
         await app.auth().signOut();
+        sessionStorage.removeItem('loggedIn');
+        localStorage.removeItem("authToken");
+        setUser(null)
+        setProfile({})
     };
 
     const getProfile = async () => {
-        setLoadingUser(true);
+        if (!sessionStorage.getItem("loggedIn")) setLoadingUser(true);
         try {
             const token = localStorage.getItem("authToken");
             if (token) tokenAuth(token);
             const response = await axios.post(`/api/users/getUserAuth`);
             if (response.data.user) setProfile(response.data.user);
+            sessionStorage.setItem('loggedIn', 'true');
+            if (timeOut) clearTimeout(timeOut);
+            timeOut= setTimeout(getUser, 1000 * 120);
         } catch (e) {
             setProfile(null);
+            sessionStorage.setItem('loggedIn', false);
         }
         setLoadingUser(false);
     };
@@ -92,8 +98,7 @@ export const AuthContext = ({children}) => {
                     getProfile,
                     updateUser,
                     getUser,
-                }}
-            >
+                }}>
                 {children}
             </Auth.Provider>
         );

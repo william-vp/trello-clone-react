@@ -75,79 +75,79 @@ const InviteBoard = () => {
 
     return (
         <Fragment>
-                <Popover
-                    placement="bottomLeft"
-                    content={<Fragment>
-                        <Text strong>{t('board:invite_board_title')}</Text>
-                        <Paragraph className="text-muted">
-                            {t('board:invite_board_description')}
-                        </Paragraph>
-                        <div className="w-100 rounded-lg p-1 pt-0 my-0 group-search">
-                            <Form
-                                className="mt-0 pt-0"
-                                name="customized_form_controls"
-                                layout="inline"
-                                initialValues={{}}>
-                                <Form.Item name="price">
-                                    <Select
-                                        showSearch autoClearSearchValue
-                                        showArrow={false}
-                                        style={{width: 200}}
-                                        placeholder={t('search_user_placeholder')}
-                                        optionFilterProp="children"
-                                        onChange={(e) => onChange(e)}
-                                        notFoundContent={null}
-                                        onSearch={onSearch}>
-                                        {users.map((user) => {
-                                            return <Option
-                                                key={user._id}
-                                                value={user.id}>{user.name ? user.name : user.email}</Option>
-                                        })}
-                                        {query.length > 3 && users.length === 0 &&
-                                            <Text>{t('board:no_results_search_user')}</Text>}
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item>
-                                    <Button
-                                        icon={<SearchIcon className="m-icon"/>}
-                                        type="primary rounded-lg mt-1 mr-0"
-                                        size={"medium"}/>
-                                </Form.Item>
-                            </Form>
-                        </div>
+            <Popover
+                placement="bottomLeft"
+                content={<Fragment>
+                    <Text strong>{t('board:invite_board_title')}</Text>
+                    <Paragraph className="text-muted">
+                        {t('board:invite_board_description')}
+                    </Paragraph>
+                    <div className="w-100 rounded-lg p-1 pt-0 my-0 group-search">
+                        <Form
+                            className="mt-0 pt-0"
+                            name="customized_form_controls"
+                            layout="inline"
+                            initialValues={{}}>
+                            <Form.Item name="price">
+                                <Select
+                                    showSearch autoClearSearchValue
+                                    showArrow={false}
+                                    style={{width: 200}}
+                                    placeholder={t('search_user_placeholder')}
+                                    optionFilterProp="children"
+                                    onChange={(e) => onChange(e)}
+                                    notFoundContent={null}
+                                    onSearch={onSearch}>
+                                    {users.map((user) => {
+                                        return <Option
+                                            key={user._id}
+                                            value={user.id}>{user.name ? user.name : user.email}</Option>
+                                    })}
+                                    {query.length > 3 && users.length === 0 &&
+                                        <Text>{t('board:no_results_search_user')}</Text>}
+                                </Select>
+                            </Form.Item>
+                            <Form.Item>
+                                <Button
+                                    icon={<SearchIcon className="m-icon"/>}
+                                    type="primary rounded-lg mt-1 mr-0"
+                                    size={"medium"}/>
+                            </Form.Item>
+                        </Form>
+                    </div>
 
-                        {selected.length > 0 && <Fragment>
-                            <div className="border border-light bg-white shadow-md p-2 mt-3 mb-5">
-                                <List
-                                    dataSource={selected}
-                                    renderItem={item => (
-                                        <List.Item key={item._id}>
-                                            <List.Item.Meta
-                                                avatar={item.photoUrl ?
-                                                    <Avatar shape="square"
-                                                            src={getRouteImage(item.photoUrl, 'users', 'avatar')}/> :
-                                                    <Avatar shape="square" icon={<UserOutlined/>}/>}
-                                                title={<Text
-                                                    className="name-label">{item.name ? item.name : item.email}</Text>}
-                                            />
-                                            <Button
-                                                onClick={() => handleRemoveSelected(item._id)}
-                                                size="small"
-                                                icon={<CloseOutlined/>} danger/>
-                                        </List.Item>
-                                    )}>
-                                </List>
-                            </div>
-                            <div className="text-center">
-                                <Button onClick={submitAddMember} type="primary">{t('board:invite_text')}</Button>
-                            </div>
-                        </Fragment>}
+                    {selected.length > 0 && <Fragment>
+                        <div className="border border-light bg-white shadow-md p-2 mt-3 mb-5">
+                            <List
+                                dataSource={selected}
+                                renderItem={item => (
+                                    <List.Item key={item._id}>
+                                        <List.Item.Meta
+                                            avatar={item.photoUrl ?
+                                                <Avatar shape="square"
+                                                        src={getRouteImage(item.photoUrl, 'users', 'avatar')}/> :
+                                                <Avatar shape="square" icon={<UserOutlined/>}/>}
+                                            title={<Text
+                                                className="name-label">{item.name ? item.name : item.email}</Text>}
+                                        />
+                                        <Button
+                                            onClick={() => handleRemoveSelected(item._id)}
+                                            size="small"
+                                            icon={<CloseOutlined/>} danger/>
+                                    </List.Item>
+                                )}>
+                            </List>
+                        </div>
+                        <div className="text-center">
+                            <Button onClick={submitAddMember} type="primary">{t('board:invite_text')}</Button>
+                        </div>
                     </Fragment>}
-                    trigger="click">
-                    <Tooltip title={t('board:invite_board_title')}>
-                        <Button type="primary" icon={<PlusOutlined className="font-weight-bolder"/>} shape="square"/>
-                    </Tooltip>
-                </Popover>
+                </Fragment>}
+                trigger="click">
+                <Tooltip title={t('board:invite_board_title')}>
+                    <Button type="primary" icon={<PlusOutlined className="font-weight-bolder"/>} shape="square"/>
+                </Tooltip>
+            </Popover>
         </Fragment>
     );
 };

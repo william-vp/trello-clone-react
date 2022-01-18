@@ -40,13 +40,9 @@ const Settings = () => {
     if (loading) return <Loading/>
     if (!selectedBoard) return <Page404/>
 
-    const showDrawer = () => {
-        setVisible(true);
-    };
+    const showDrawer = () => setVisible(true);
 
-    const handleClose = () => {
-        setVisible(false);
-    };
+    const handleClose = () => setVisible(false);
 
     const onChange = (e) => {
         const field = e.target.name

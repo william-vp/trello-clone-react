@@ -4,15 +4,12 @@ import useEditCard from "./useEditCard";
 import InviteCard from "./InviteCard";
 import axios from "../../../config/axios";
 import {AttachFile, Comment} from "@material-ui/icons";
-import {useTranslation} from "react-i18next";
 
 const {Text} = Typography
 
 const CardItem = ({card}) => {
     const {coverUrl, name} = card
     const {modalEditCard, handleShowModal} = useEditCard(card)
-
-    const {t} = useTranslation(['app', 'board'])
 
     const [cardMembers, setCardMembers] = useState([])
     const [commentsLength, setCommentsLength] = useState(0)

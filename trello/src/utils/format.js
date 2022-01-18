@@ -1,13 +1,11 @@
 import moment from 'moment'
 import 'moment/locale/es'
 
-let lang = localStorage.getItem('i18nextLng')
+let lang = localStorage.getItem('i18nextLng') ? localStorage.getItem('i18nextLng') : ''
 lang = lang.includes('es') ? 'es' : 'en'
 moment.locale(lang)
 
-export const formatDate = date => {
-    return moment(date)
-}
+export const formatDate = date => moment(date)
 
 export const formatDateMonth = date => {
     const today = moment(date).format("ll");
@@ -15,9 +13,7 @@ export const formatDateMonth = date => {
     return `De ${today} hasta ${month}`
 }
 
-export const getDateRelative = (date, type) => {
-    return moment(date).fromNow();
-}
+export const getDateRelative = date => moment(date).fromNow();
 
 export const getDateString = (date, short) => {
     if (short) return moment(date).format("D MMM YYYY");

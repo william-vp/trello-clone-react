@@ -7,8 +7,6 @@ import {useSelector} from "react-redux";
 
 const CardsList = ({list}) => {
     const [cards, setCards] = useState([]);
-    const [orderCards, setOrderCards] = useState([])
-
     const {orderCardsList} = useSelector(state => state.board);
 
     const getCards = async listId => {
@@ -23,24 +21,6 @@ const CardsList = ({list}) => {
 
     useEffect(() => {
         getCards(list._id);
-        /* orderCardsList.forEach(item => {
-            if (item._id === list._id) {
-                setOrderCards(item.cards)
-            }
-        });
-        if (cards.length > 0) {
-            let cardsCopy = []
-            cards.forEach(card => {
-                let index = cards.map(c => c._id).indexOf(card._id);
-                if (index) {
-                    card.position = orderCards[index].position
-                }
-                cardsCopy.push(card)
-            });
-            console.log(cardsCopy)
-            setCards(cardsCopy)
-        } */
-
         // eslint-disable-next-line
     }, [orderCardsList]);
 

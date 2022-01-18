@@ -7,7 +7,9 @@ function App() {
     const {profile, user, loadingUser} = useContext(Auth);
 
     useEffect(() => {
-        if (loadingUser) return <Loading/>
+        if (sessionStorage.getItem("loggedIn") !== 'true') {
+            if (loadingUser) return <Loading/>
+        }
         if (!profile && !user) history.push("/boards");
         // eslint-disable-next-line
     }, [profile, user]);

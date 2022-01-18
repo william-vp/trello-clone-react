@@ -40,10 +40,14 @@ const useEditCard = (card) => {
     const handleShowModal = () => setVisible(true)
     const handleCancel = () => setVisible(false)
 
-    const onChangeCover = (cover, srcFull) => {
+    const onChangeCover = async (cover, srcFull) => {
         setForm({
             ...form, cover, coverUrl: srcFull
         })
+        const response = await axios.put(`/api/cards/${card._id}`, {coverUrl: srcFull});
+        if (response.data.card) {
+            card.coverUrl = response.data.card.srcFull
+        }
     }
 
     const getCardMembers = async () => {

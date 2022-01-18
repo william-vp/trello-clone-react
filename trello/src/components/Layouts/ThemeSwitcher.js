@@ -51,6 +51,5 @@ const ThemeSwitcher = ({tooltip}) => {
             </Tooltip>
         );
     }
-
 };
 export default ThemeSwitcher;

@@ -7,7 +7,7 @@ const Home = () => {
     const history = useHistory()
     const {user} = useContext(Auth);
     useEffect(() => {
-        if (user) history.push("/");
+        //if (user) history.push("/boards");
         // eslint-disable-next-line
     }, [history, user]);
     return (

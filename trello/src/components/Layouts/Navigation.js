@@ -1,6 +1,6 @@
-import React, {Fragment, useContext, useEffect, useState} from 'react';
+import React, {Fragment, useContext} from 'react';
 import logo from '../../Logo-small.svg';
-import {Button, Divider, Menu, Input, Typography, Form, Dropdown, Avatar, Select} from 'antd';
+import {Button, Divider, Menu, Input, Typography, Form, Dropdown, Avatar} from 'antd';
 import {CaretDownOutlined, AppstoreFilled, UserOutlined, GlobalOutlined} from '@ant-design/icons';
 import {ExitToApp as ExitToAppIcon, AccountCircle as AccountCircleIcon} from '@material-ui/icons';
 import ThemeSwitcher from "./ThemeSwitcher";
@@ -11,19 +11,14 @@ import {getRouteImage} from "../../utils/format";
 import Loading from "./Loading";
 import {useDispatch, useSelector} from "react-redux";
 import {MotionScene, MotionScreen, SharedElement} from "react-motion-layout";
-import axios from "../../config/axios";
 import {setBoardsSearchAction} from "../../actions/boardActions";
 
 const {Text} = Typography
 const {SubMenu} = Menu
-const {Option} = Select
 
 const Navigation = () => {
     const history = useHistory()
     const {user, logOut, profile, loadingAuth, loadingUser} = useContext(Auth);
-    const [boards, setBoards] = useState([]);
-    const [query, setQuery] = useState('');
-   
     const {t, i18n} = useTranslation(['app', 'auth']);
     const changeLanguage = lang => i18n.changeLanguage(lang)
 
@@ -32,11 +27,7 @@ const Navigation = () => {
     const dispatch = useDispatch();
     const onSearch = query => dispatch(setBoardsSearchAction(query))
 
-    const handleClick = e => {
-        console.log('click ', e);
-    };
-    const current = "mail";
-
+    // if (sessionStorage.getItem("loggedIn") !== 'true') 
     if (loadingAuth || loadingUser) return <Loading/>;
     if (!profile) history.push('/login')
     const {name, photoUrl} = profile
@@ -76,7 +67,7 @@ const Navigation = () => {
 
     const userDropdown = () => {
         return <Dropdown overlay={menu} className="ant-dropdown-link">
-            <a href="#!" rel="noreferrer noopener" className="ant-dropdown-link"
+            <a href="#" rel="noreferrer noopener" className="ant-dropdown-link"
                onClick={e => e.preventDefault()}>
                 {photoUrl ?
                     <Avatar shape="square"
@@ -89,10 +80,10 @@ const Navigation = () => {
     }
 
     return (
-        <Menu className="py-2 nav-light border-0 shadow-sm" onClick={handleClick} selectedKeys={[current]}
+        <Menu className="py-2 nav-light border-0 shadow-sm" selectedKeys={['']}
               mode="horizontal">
             <Menu.Item className="not-hover" key="logo">
-                <Link to={"/home"}>
+                <Link to={"/boards"}>
                     <img src={logo} width={32} height={29} alt="LOGO"/>
                     <Text strong className="pl-2">Trello React</Text>
                 </Link>
@@ -112,7 +103,6 @@ const Navigation = () => {
                 <Menu.Item key="div">
                     <Divider/>
                 </Menu.Item>
-                {/*<Menu.Divider style={{height: '2rem'}} type="vertical"/>*/}
 
                 <Menu.Item key="all" className="not-hover">
                     <Link to={"/"}>
@@ -124,7 +114,7 @@ const Navigation = () => {
                 </Menu.Item>
             </Fragment>}
 
-            <Menu.Item key="search" className="not-hover pt-0" style={{ marginLeft: 'auto', float: 'left' }}>
+            <Menu.Item key="search" className="not-hover pt-0" style={{marginLeft: 'auto', float: 'left'}}>
                 <div className="w-100 rounded-lg p-1 pt-0 my-0 group-search">
                     <Form
                         className="mt-0 pt-0"
@@ -133,17 +123,8 @@ const Navigation = () => {
                         //onFinish={onFinish}
                         initialValues={{}}>
                         <Form.Item name="search">
-                            <Input onChange={(e) => onSearch(e.target.value)} className="border-0 p-2 pr-1 mt-0" placeholder={t('search_user_placeholder')}/>
-                            {/*<Select
-                                defaultValue={""}
-                                showSearch
-                                notFoundContent={null}
-                                showArrow={false}
-                                style={{width: 200}}
-                                placeholder={t('search_user_placeholder')}
-                                optionFilterProp="children"
-                                onSearch={onSearch}>
-                            </Select>*/}
+                            <Input onChange={(e) => onSearch(e.target.value)} className="border-0 p-2 pr-1 mt-0"
+                                   placeholder={t('search_user_placeholder')}/>
                         </Form.Item>
                         <Form.Item>
                             <Button type="primary rounded-lg mt-1 mr-0" size={"medium"}>{t('search')}</Button>

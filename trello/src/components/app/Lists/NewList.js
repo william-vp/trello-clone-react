@@ -49,7 +49,7 @@ const NewList = ({button_style}) => {
 
     return (
         <Fragment>
-            {button_style == 1 ?
+            {button_style === 1 ?
                 <Button onClick={handleShowModal} type="primary">Crear lista</Button>
                 : <Button onClick={handleShowModal} block className="button_add_list" type="primary">
                     <div className="row">

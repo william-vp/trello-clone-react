@@ -34,7 +34,7 @@ const CoverBoardSelect = ({onChangeImage}) => {
                     let height = image.height;
                     return {
                         src: image.urls.small,
-                        srcFull: image.urls.full,
+                        srcFull: image.urls.regular,
                         alt: image.description,
                         width, height,
                         key: image.id
@@ -52,7 +52,7 @@ const CoverBoardSelect = ({onChangeImage}) => {
         // eslint-disable-next-line
     }, [page, query, numPerPage]);
 
-    const openLightbox = useCallback((event, {photo, index}) => {
+    const openLightbox = useCallback((event, {index}) => {
         setCurrentImage(index);
         setViewerIsOpen(true);
     }, [])

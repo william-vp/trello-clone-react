@@ -5,7 +5,6 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import axios from "../../../config/axios";
 import {setOrderCardsListAction} from "../../../actions/boardActions";
 import {useDispatch} from "react-redux";
-import {Empty} from "antd";
 
 const BoardList = ({lists}) => {
     const [order, setOrder] = useState([])
@@ -23,29 +22,16 @@ const BoardList = ({lists}) => {
         // eslint-disable-next-line
     }, [lists])
 
-    const reorder = (list, startIndex, endIndex) => {
-        const result = Array.from(list);
-        const [removed] = result.splice(startIndex, 1);
-        result.splice(endIndex, 0, removed);
-        return result;
-    };
-
     const onDragEnd = result => {
-        //console.log(result)
-        const {destination, source, draggableId} = result;
-        //console.log(result)
-
+        const {destination, source} = result;
         if (!destination) return
         if (destination.droppableId === source.droppableId && destination.index === source.index) return
 
         const startList = order.filter(o => o._id === source.droppableId)[0];
         const finishList = order.filter(o => o._id === destination.droppableId)[0];
-        //console.log(startList)
-        //console.log(finishList)
 
         if (startList._id === finishList._id) {
             let newLists = []
-
             order.forEach(ord => {
                 if (ord._id === startList._id) {
                     const dest_index = destination.index
@@ -81,7 +67,6 @@ const BoardList = ({lists}) => {
 
                     console.log(startList)
                     console.log(finishList)
-                    //handleChangeNewPosition({ _id: cardsList[source.index]._id, position: cardsList[source.index].position, list:  })
                     handleChangeNewPosition({
                         _id: cardsList[dest_index]._id,
                         position: cardsList[dest_index].position,

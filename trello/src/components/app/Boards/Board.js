@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import Layout from "../../Layouts/Layout";
 import axios from "../../../config/axios";
 import Loading from "../../Layouts/Loading";
@@ -19,6 +19,7 @@ const Board = () => {
     const {t} = useTranslation(['board']);
     const [loading, setLoading] = useState(true);
     const {listsSelectedBoard} = useSelector(state => state.board);
+    const history = useHistory()
 
     const dispatch = useDispatch();
     const selectBoard = board => dispatch(selectBoardAction(board))
@@ -43,6 +44,10 @@ const Board = () => {
             getBoard(boardCode)
             setListsBoard(boardCode)
         }
+        if (!sessionStorage.getItem("loggedIn")) {
+            console.log("redirecting to login");
+            history.push("/login");
+        }
         // eslint-disable-next-line
     }, [boardCode]);
 
@@ -55,7 +60,7 @@ const Board = () => {
                 <div className="bg-container-gray mt-0 rounded-lg p-5">
                     {listsSelectedBoard && <Fragment>
                         {listsSelectedBoard.length > 0 && <BoardList lists={listsSelectedBoard}/>}
-                        {listsSelectedBoard.length == 0 &&
+                        {listsSelectedBoard.length === 0 &&
                             <Fragment>
                                 <Empty description={t('no_lists')}>
                                     <NewList button_style={1}/>

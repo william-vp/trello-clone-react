@@ -18,7 +18,7 @@ const themes = {
     dark: `${process.env.PUBLIC_URL}/dark-theme.css`,
     light: `${process.env.PUBLIC_URL}/light-theme.css`,
 };
-const defaultTheme = localStorage.getItem('theme')
+const defaultTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light';
 
 ReactDOM.render(
     <React.StrictMode>
