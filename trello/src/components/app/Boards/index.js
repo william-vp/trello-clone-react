@@ -25,7 +25,7 @@ const Boards = () => {
 
     useEffect(() => {
         selectBoard(null)
-        //getBoards()
+        getBoards()
         if (!sessionStorage.getItem("loggedIn")) {
             console.log("redirecting to login");
             history.push("/login");
