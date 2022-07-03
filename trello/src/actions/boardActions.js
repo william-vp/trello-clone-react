@@ -48,10 +48,12 @@ export function getBoardUserAction() {
     return async (dispatch) => {
         try {
             dispatch(loading(true))
+            const token = localStorage.getItem('authToken');
+            if (token) tokenAuth(token)
             const response = await axios.get('/api/boards');
             if (response.data.boards) dispatch(setBoardsUser(response.data.boards))
         } catch (e) {
-
+            console.log(e)
         }
         dispatch(loading(false))
     }

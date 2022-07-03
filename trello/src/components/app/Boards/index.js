@@ -24,11 +24,12 @@ const Boards = () => {
     const selectBoard = board => dispatch(selectBoardAction(board))
 
     useEffect(() => {
-        selectBoard(null)
-        getBoards()
-        if (!sessionStorage.getItem("loggedIn")) {
+        if (sessionStorage.getItem("loggedIn") === null) {
             console.log("redirecting to login");
             history.push("/login");
+        }else{
+            selectBoard(null)
+            getBoards()
         }
         // eslint-disable-next-line
     }, []);
@@ -51,8 +52,8 @@ const Boards = () => {
 
     return (
         <Layout>
-            <div className="container-fluid w-100 bg-container-gray mt-0 pt-0">
-                <div className="container mx-auto pt-lg-5 pt-md-5 pt-xs-4 vh100">
+            <div className="container-fluid w-100 mt-0 pt-0">
+                <div className="container mx-auto pt-lg-5 pt-md-5 pt-xs-4">
                     <div className="row my-lg-3 my-md-5 my-sm-4">
                         <div className="col-6">
                             <Title level={3}>{t('app:all_boards')}</Title>

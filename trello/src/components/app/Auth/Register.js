@@ -13,7 +13,7 @@ import {MotionScreen, SharedElement, useMotion, MotionScene} from "react-motion-
 import SocialButtons from "./SocialButtons";
 import {Auth} from "../../../contexts/AuthContext";
 
-const {Title, Text, Paragraph} = Typography
+const {Title, Text, Paragraph, Link} = Typography
 
 const Register = () => {
     const {user} = useContext(Auth);
@@ -88,7 +88,7 @@ const Register = () => {
                     <div className="col-lg-5 col-md-6 col-xs-12 mx-auto card-login p-5 my-auto border-sm">
                         <Paragraph>
                             <img src={logo} width={32} height={29} alt="LOGO"/>
-                            <Text strong className="pl-2">Trello React</Text>
+                            <Text strong className="pl-2">Thullo</Text>
                         </Paragraph>
 
                         <MotionScreen>
@@ -167,10 +167,10 @@ const Register = () => {
                 </div>
                 <div className="row col-lg-5 col-md-6 col-xs-12 mx-auto mt-2">
                     <div className="col-6 text-left">
-                        <Text>WilliamVP</Text>
+                        <Link href="https://www.linkedin.com/in/william-vp-a6785b181/">WilliamVP</Link>
                     </div>
                     <div className="col-6 text-right">
-                        <Text>devchallenges.io</Text>
+                        <Link href="https://devchallenges.io/">devchallenges.io</Link>
                     </div>
                 </div>
                 <div className="row col-lg-5 col-md-6 col-xs-12 mx-auto mt-2">

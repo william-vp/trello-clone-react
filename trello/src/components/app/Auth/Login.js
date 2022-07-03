@@ -18,7 +18,7 @@ import {
 } from "react-motion-layout";
 import SocialButtons from "./SocialButtons";
 
-const {Title, Text, Paragraph} = Typography;
+const {Title, Text, Paragraph, Link} = Typography;
 
 const Login = () => {
     const {user} = useContext(Auth);
@@ -26,12 +26,12 @@ const Login = () => {
     let token= sessionStorage.getItem("loggedIn")
 
     useEffect(() => {
-        if (sessionStorage.getItem("loggedIn")) {
+        if (token) {
             console.log("redirecting to boards");
             history.push("/boards");
         }
         // eslint-disable-next-line
-    }, [history, user, token]);
+    }, [token, user]);
 
     const withTransition = useMotion(`register`);
     // eslint-disable-next-line
@@ -53,7 +53,7 @@ const Login = () => {
             .then((result) => {
                 console.log(result);
                 openInfoLoading(false);
-                openNotification("success", "Correcto", "Inicio de sesión exitoso");
+                openNotification("success", "Correcto", "Inicio de sesión exitoso. Espere un momento por favor");
                 return history.push("/boards");
             })
             .catch((error) => {
@@ -97,7 +97,7 @@ const Login = () => {
                         <Paragraph>
                             <img src={logo} width={32} height={29} alt="LOGO"/>
                             <Text strong className="pl-2">
-                                Trello React
+                                Thullo
                             </Text>
                         </Paragraph>
 
@@ -182,10 +182,10 @@ const Login = () => {
                 </div>
                 <div className="row col-lg-5 col-md-6 col-xs-12 mx-auto mt-2">
                     <div className="col-6 text-left">
-                        <Text>WilliamVP</Text>
+                        <Link href="https://www.linkedin.com/in/william-vp-a6785b181/">WilliamVP</Link>
                     </div>
                     <div className="col-6 text-right">
-                        <Text>devchallenges.io</Text>
+                        <Link href="https://devchallenges.io/">devchallenges.io</Link>
                     </div>
                 </div>
                 <div className="row col-lg-5 col-md-6 col-xs-12 mx-auto mt-2">

@@ -5,8 +5,8 @@ import {initReactI18next} from "react-i18next";
 
 i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
     fallbackLng: 'es',
+    //debug: process.env.REACT_APP_DEBUG,
     react: {
-        useSuspense: false,
-        wait: false
+        useSuspense: false
     }
 });

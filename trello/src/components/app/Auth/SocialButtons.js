@@ -11,6 +11,8 @@ import fb from "../../../static/images/Facebook.svg";
 import { useHistory } from "react-router-dom";
 import { Auth } from "../../../contexts/AuthContext";
 
+const fb_login= process.env.REACT_FB_LOGIN === 'true';
+
 const SocialButtons = () => {
   const history = useHistory();
   const { user, getUser } = useContext(Auth);
@@ -52,9 +54,9 @@ const SocialButtons = () => {
         <Button type="link" onClick={() => socialLogin(googleAuthProvider)}>
           <Avatar size="large" src={google} />
         </Button>
-        <Button type="link" onClick={() => socialLogin(facebookAuthProvider)}>
-          <Avatar size="large" src={fb} />
-        </Button>
+        {fb_login && <Button type="link" onClick={() => socialLogin(facebookAuthProvider)}>
+          <Avatar size="large" src={fb}/>
+        </Button>}
       </Space>
     </div>
   );

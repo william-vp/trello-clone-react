@@ -10,7 +10,7 @@ function App() {
         if (sessionStorage.getItem("loggedIn") !== 'true') {
             if (loadingUser) return <Loading/>
         }
-        if (!profile && !user) history.push("/boards");
+        //if (!profile && !user) history.push("/boards"); 
         // eslint-disable-next-line
     }, [profile, user]);
 

@@ -45,12 +45,13 @@ export const AuthContext = ({children}) => {
         // eslint-disable-next-line
     }, []);
 
-    const logOut = async () => {
+    const logOut = async (history) => {
         await app.auth().signOut();
         sessionStorage.removeItem('loggedIn');
         localStorage.removeItem("authToken");
         setUser(null)
         setProfile({})
+        window.location.href = '/login';
     };
 
     const getProfile = async () => {

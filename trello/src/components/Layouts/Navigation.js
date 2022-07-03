@@ -27,14 +27,13 @@ const Navigation = () => {
     const dispatch = useDispatch();
     const onSearch = query => dispatch(setBoardsSearchAction(query))
 
-    // if (sessionStorage.getItem("loggedIn") !== 'true') 
     if (loadingAuth || loadingUser) return <Loading/>;
     if (!profile) history.push('/login')
     const {name, photoUrl} = profile
 
     const menu = (
         <Menu>
-            <Menu.Item>
+            <Menu.Item key='profile'>
                 <Button onClick={() => history.push('/profile')} type="text">
                     <AccountCircleIcon className="m-icon"/> {t('auth:my_profile')}
                 </Button>
@@ -45,20 +44,22 @@ const Navigation = () => {
                 <Button type="text">
                     <GlobalOutlined/> {t('change_lang')}
                 </Button>}>
-                <Menu.Item onClick={() => changeLanguage('en')}><Button
-                    type="text">{t("lang_en_name")}</Button></Menu.Item>
-                <Menu.Item onClick={() => changeLanguage('es')}><Button
-                    type="text">{t("lang_es_name")}</Button></Menu.Item>
+                <Menu.Item key='lang_en' onClick={() => changeLanguage('en')}>
+                    <Button type="text">{t("lang_en_name")}</Button>
+                </Menu.Item>
+                <Menu.Item key='lang_es' onClick={() => changeLanguage('es')}>
+                    <Button type="text">{t("lang_es_name")}</Button>
+                </Menu.Item>
             </SubMenu>
 
-            <Menu.Item>
-                <Button type="text">
+            <Menu.Item key='theme_switch'>
+                <Text className='ant-btn ant-btn-text'>
                     <ThemeSwitcher tooltip={false}/>
-                </Button>
+                </Text>
             </Menu.Item>
 
-            <Menu.Item>
-                <Button onClick={logOut} type="text">
+            <Menu.Item key='logout'>
+                <Button onClick={() => logOut(history)} type="text">
                     <ExitToAppIcon className="m-icon"/> {t('auth:logout')}
                 </Button>
             </Menu.Item>
@@ -67,7 +68,7 @@ const Navigation = () => {
 
     const userDropdown = () => {
         return <Dropdown overlay={menu} className="ant-dropdown-link">
-            <a href="#" rel="noreferrer noopener" className="ant-dropdown-link"
+            <a href="#!" rel="noreferrer noopener" className="ant-dropdown-link"
                onClick={e => e.preventDefault()}>
                 {photoUrl ?
                     <Avatar shape="square"
@@ -80,12 +81,12 @@ const Navigation = () => {
     }
 
     return (
-        <Menu className="py-2 nav-light border-0 shadow-sm" selectedKeys={['']}
+        <Menu className="py-2 nav-light border-0 shadow-md" selectedKeys={['']}
               mode="horizontal">
             <Menu.Item className="not-hover" key="logo">
                 <Link to={"/boards"}>
                     <img src={logo} width={32} height={29} alt="LOGO"/>
-                    <Text strong className="pl-2">Trello React</Text>
+                    <Text strong className="pl-2">Thullo</Text>
                 </Link>
             </Menu.Item>
 
