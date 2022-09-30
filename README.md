@@ -1,6 +1,6 @@
 <!-- Please update value in the {}  -->
 
-<h1 style="text-align: center">Trello React Clone</h1>
+<h1 style="text-align: center">Thullo</h1>
 
 <div style="text-align: center">
    Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
@@ -8,7 +8,7 @@
 
 <div style="text-align: center">
   <h3>
-    <a href="https://trello-react-clone.netlify.app/">
+    <a href="https://thullo-wavp.vercel.app">
       Solution
     </a>
     <span> | </span>
